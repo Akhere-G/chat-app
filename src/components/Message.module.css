@@ -1,0 +1,39 @@
+.message {
+  min-width: 30%;
+  max-width: 80%;
+}
+
+.message header {
+  padding: 0.5rem 0.5rem 0.3rem 0.4rem;
+  border-radius: 1rem 1rem 0rem 0rem;
+  text-transform: capitalize;
+}
+
+.message footer {
+  padding: 0.2rem 0.5rem 1rem 0.4rem;
+  border-radius: 0rem 0rem 1rem 1rem;
+  font-weight: 100;
+  word-wrap: break-word;
+}
+
+.yourMessage {
+  margin: 0 0 1rem auto;
+}
+
+.yourMessage header {
+  background-color: #6af;
+}
+.yourMessage footer {
+  background-color: #8cf;
+}
+
+.theirMessage {
+  margin: 0 auto 2rem 0;
+}
+
+.theirMessage header {
+  background-color: #6fa;
+}
+.theirMessage footer {
+  background-color: #8fc;
+}

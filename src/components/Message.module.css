@@ -1,6 +1,7 @@
 .message {
   min-width: 30%;
   max-width: 80%;
+  position: relative;
 }
 
 .message header {
@@ -11,13 +12,27 @@
 
 .message footer {
   padding: 0.2rem 0.5rem 1rem 0.4rem;
-  border-radius: 0rem 0rem 1rem 1rem;
   font-weight: 100;
   word-wrap: break-word;
 }
 
 .yourMessage {
   margin: 0 0 1rem auto;
+  animation: slideInRight 800ms ease 10ms forwards;
+}
+
+@keyframes slideInRight {
+  0% {
+    right: -100px;
+    transform: scale(0);
+    opacity: 0;
+  }
+
+  100% {
+    right: 0px;
+    transform: scale(1);
+    opacity: 1;
+  }
 }
 
 .yourMessage header {
@@ -25,10 +40,26 @@
 }
 .yourMessage footer {
   background-color: #8cf;
+  border-radius: 0rem 0rem 0rem 1rem;
 }
 
 .theirMessage {
   margin: 0 auto 2rem 0;
+  animation: slideInLeft 800ms ease 10ms backwards;
+}
+
+@keyframes slideInLeft {
+  0% {
+    left: -100px;
+    transform: scale(0);
+    opacity: 0;
+  }
+
+  100% {
+    left: 0px;
+    transform: scale(1);
+    opacity: 1;
+  }
 }
 
 .theirMessage header {
@@ -36,4 +67,5 @@
 }
 .theirMessage footer {
   background-color: #8fc;
+  border-radius: 0rem 0rem 1rem 0rem;
 }

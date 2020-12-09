@@ -1,30 +1,37 @@
 import React, { useState, useEffect } from "react";
-import { v4 as uuidv4 } from "uuid";
-import "./App.css";
-import {
-  Button,
-  FormControl,
-  InputLabel,
-  Input,
-  FormHelperText,
-} from "@material-ui/core";
+import { Button, FormControl, Input } from "@material-ui/core";
 import Message from "./components/Message";
+import firebase from "firebase";
+import db from "./firebase";
+import "./App.css";
+
 function App() {
   const [input, setInput] = useState("");
-  const [messages, setMessages] = useState([
-    { text: "hello guys", id: 1, writter: "steve" },
-  ]);
+  const [messages, setMessages] = useState([]);
   const [user, setUser] = useState("");
 
   useEffect(() => {
-    setUser(prompt("What is your name"));
+    setUser("Akhere Ihoeghinlan");
   }, []);
 
-  const sendMessage = () => {
+  useEffect(() => {
+    db.collection("messages")
+      .orderBy("timestamp", "asc")
+      .onSnapshot(snapshot => {
+        setMessages(snapshot.docs.map(doc => ({ ...doc.data(), id: doc.id })));
+      });
+  }, []);
+
+  const sendMessage = e => {
     if (input) {
-      setMessages([...messages, { text: input, id: uuidv4(), writter: user }]);
+      db.collection("messages").add({
+        message: input,
+        username: user,
+        timestamp: firebase.firestore.FieldValue.serverTimestamp(),
+      });
     }
     setInput("");
+    e.target.scrollIntoView();
   };
 
   return (
@@ -58,7 +65,9 @@ function App() {
               type='submit'
               variant='contained'
               color='primary'
-              onClick={sendMessage}
+              onClick={e => {
+                sendMessage(e);
+              }}
             >
               send
             </Button>

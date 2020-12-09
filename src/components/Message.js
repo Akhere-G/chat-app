@@ -1,14 +1,15 @@
 import React from "react";
 import styles from "./Message.module.css";
-const Message = ({ text, writter, currentUser }) => {
-  const style = currentUser === writter ? "yourMessage" : "theirMessage";
+const Message = ({ message, username, currentUser, timestamp }) => {
+  const style = currentUser === username ? "yourMessage" : "theirMessage";
   return (
     <div className={`${styles.message} ${styles[style]}`}>
       <header>
-        <p>{writter}</p>
+        <p>{username}</p>
+        <p>{new Date(timestamp).toUTCString()}</p>
       </header>
       <footer>
-        <h4>{text}</h4>
+        <h4>{message}</h4>
       </footer>
     </div>
   );

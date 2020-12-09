@@ -1,6 +1,6 @@
 import React from "react";
 import styles from "./Login.module.css";
-import db, { auth, provider } from "../firebase";
+import { auth, provider } from "../firebase";
 
 export default function Login({ setUser }) {
   const colors = [];

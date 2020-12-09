@@ -1,12 +1,36 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import styles from "./Message.module.css";
 import PropTypes from "prop-types";
-
+import { Transition } from "react-transition-group";
 const Message = ({ message, user, currentUser, timestamp }) => {
   const style = currentUser.id === user.id ? "yourMessage" : "theirMessage";
-  const name = currentUser.id === user.id ? "" : `${user.username} |`;
+  const name = user.username;
+  const [entered, setEntered] = useState(false);
 
-  let timeText = "loading";
+  const defaultStyle = {
+    transition: `transform 200ms, opacity 200ms ease`,
+    opacity: 1,
+    transform: "scale(0)",
+  };
+
+  const transitionStyles = {
+    entering: {
+      transform: "scale(1)",
+      opacity: 1,
+      left: "-10px",
+      transition: "all linear 300ms",
+    },
+    entered: {
+      transform: "scale(1)",
+      opacity: 1,
+      left: "0px",
+      transition: "all linear 300ms",
+    },
+    exiting: { opacity: 0 },
+    exited: { opacity: 0 },
+  };
+
+  let timeText = "";
   if (timestamp) {
     const date = new Date(timestamp.seconds * 1000);
     const datePosted = date.toLocaleDateString();
@@ -17,18 +41,39 @@ const Message = ({ message, user, currentUser, timestamp }) => {
         : `${datePosted} | ${timePosted}`;
   }
 
+  useEffect(() => {
+    setEntered(true);
+  }, []);
+
   return (
-    <div className={`${styles.message} ${styles[style]}`}>
-      <header>
-        <p>
-          {name} {timestamp && timeText}
-        </p>
-        {!timestamp && <span className={styles.loading}></span>}
-      </header>
-      <footer>
-        <h4>{message}</h4>
-      </footer>
-    </div>
+    <Transition
+      in={entered}
+      timeout={{
+        appear: 500,
+        enter: 300,
+        exit: 500,
+      }}
+      unmountOnExit
+    >
+      {state => (
+        <div
+          className={`${styles.message} ${styles[style]}`}
+          style={{
+            ...defaultStyle,
+            ...transitionStyles[state],
+          }}
+        >
+          <header>
+            {currentUser.id !== user.id && <p>name</p>}
+            {state === "entered" && <p>{timeText}</p>}
+            {state === "entering" && <span className={styles.loading}></span>}
+          </header>
+          <footer>
+            <h4>{message}</h4>
+          </footer>
+        </div>
+      )}
+    </Transition>
   );
 };
 

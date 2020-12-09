@@ -9,7 +9,7 @@
 
 .header {
   position: fixed;
-  background-color: #c8f;
+  background-color: #48f;
   color: #f8f8f8;
   width: 100%;
   padding: 0.5em;
@@ -34,12 +34,19 @@
   display: flex;
   flex-direction: column;
   max-width: 700px;
-  max-height: 27%;
+  margin-bottom: 3rem;
+}
+
+.formCenter {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-width: 750px;
 }
 .messageForm {
-  background-color: #fff;
+  background-color: #246;
   padding: 1rem;
-  padding-bottom: 3rem;
   position: fixed;
   bottom: 0;
   margin-top: 1em;
@@ -48,12 +55,33 @@
   justify-content: center;
 }
 
-.messageForm div {
-  flex-direction: row;
-  display: flex;
-  margin-right: 10px;
-}
 .messageForm input {
-  margin-right: 0.5em;
+  margin-right: 3%;
   padding: 1em;
+  border-radius: 3em;
+  border: none;
+  width: 65%;
+  transition: all linear 150ms;
+}
+
+.messageForm input:active,
+.messageForm input:hover {
+  transition: all linear 150ms;
+  color: rgb(0, 45, 122);
+  letter-spacing: 0.05em;
+}
+.messageForm button {
+  padding: 1em;
+  border-radius: 3em;
+  border: none;
+  background-color: #4f4;
+  width: 20%;
+  transition: all linear 150ms;
+}
+
+.messageForm button:hover,
+.messageForm button:focus {
+  transition: all linear 150ms;
+  background-color: #8f8;
+  transform: scale(1.05);
 }

@@ -1,39 +1,60 @@
 import React, { useState, useEffect } from "react";
-import { Button, FormControl, Input } from "@material-ui/core";
 import Message from "./components/Message";
 import firebase from "firebase";
 import db from "./firebase";
 import "./App.css";
-
+import Login from "./components/Login";
 function App() {
   const [input, setInput] = useState("");
   const [messages, setMessages] = useState([]);
-  const [user, setUser] = useState("");
+  const [user, setUser] = useState(null);
+  const colors = [];
 
-  useEffect(() => {
-    setUser("Akhere Ihoeghinlan");
-  }, []);
+  for (let i = 0; i < 36; i++) {
+    colors.push([i * 10, "100%", "63%"]);
+  }
 
+  const idToHue = (id = "abcde") => {
+    if (!id) {
+      id = "abcde";
+    }
+    const hue =
+      id
+        .split("")
+        .map(s => s.charCodeAt(0))
+        .reduce((a, b) => a + b) % 36;
+
+    return hue;
+  };
   useEffect(() => {
     db.collection("messages")
       .orderBy("timestamp", "asc")
       .onSnapshot(snapshot => {
         setMessages(snapshot.docs.map(doc => ({ ...doc.data(), id: doc.id })));
       });
+
+    if (user) {
+      console.log(user.id, idToHue(user.id));
+    }
     window.scrollTo(0, document.body.scrollHeight);
   }, []);
 
-  const sendMessage = e => {
+  const sendMessage = () => {
     if (input) {
+      const timestamp = firebase.firestore.FieldValue.serverTimestamp();
+      console.log(timestamp);
       db.collection("messages").add({
         message: input,
-        username: user,
-        timestamp: firebase.firestore.FieldValue.serverTimestamp(),
+        user: user,
+        timestamp,
       });
     }
     setInput("");
-    e.target.scrollIntoView();
   };
+
+  if (!user) {
+    return <Login setUser={setUser} />;
+  }
 
   return (
     <div className='page-container'>
@@ -43,7 +64,14 @@ function App() {
       <main className='main'>
         <div className='messages'>
           {messages.map(message => {
-            return <Message key={message.id} {...message} currentUser={user} />;
+            return (
+              <Message
+                key={message.id}
+                {...message}
+                color={idToHue(message.id)}
+                currentUser={user}
+              />
+            );
           })}
         </div>
         <form
@@ -52,8 +80,8 @@ function App() {
             e.preventDefault();
           }}
         >
-          <FormControl>
-            <Input
+          <div className='formCenter'>
+            <input
               id='input'
               type='text'
               value={input}
@@ -62,17 +90,15 @@ function App() {
                 setInput(e.target.value);
               }}
             />
-            <Button
+            <button
               type='submit'
-              variant='contained'
-              color='primary'
-              onClick={e => {
-                sendMessage(e);
+              onClick={() => {
+                sendMessage();
               }}
             >
               send
-            </Button>
-          </FormControl>
+            </button>
+          </div>
         </form>
       </main>
     </div>

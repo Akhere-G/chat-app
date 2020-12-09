@@ -42,9 +42,7 @@
 
 .yourMessage {
   margin: 0 0 1em auto;
-}
 
-.yourMessageAnimate {
   animation: slideInRight 500ms ease 10ms;
 }
 
@@ -63,18 +61,13 @@
 }
 
 .yourMessage header {
-  background-color: #6af;
 }
 .yourMessage footer {
-  background-color: #8cf;
   border-radius: 0em 0em 0em 1em;
 }
 
 .theirMessage {
   margin: 0 auto 2em 0;
-}
-
-.theirMessageAnimate {
   animation: slideInLeft 500ms ease 10ms backwards;
 }
 @keyframes slideInLeft {
@@ -92,9 +85,7 @@
 }
 
 .theirMessage header {
-  background-color: #6fa;
 }
 .theirMessage footer {
-  background-color: #8fc;
   border-radius: 0em 0em 1em 0em;
 }

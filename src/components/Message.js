@@ -2,7 +2,13 @@ import React, { useState, useEffect } from "react";
 import styles from "./Message.module.css";
 import PropTypes from "prop-types";
 import { Transition } from "react-transition-group";
-const Message = ({ message, user, currentUser, timestamp }) => {
+const Message = ({
+  message,
+  user,
+  currentUser,
+  timestamp,
+  backgroundColor,
+}) => {
   const style = currentUser.id === user.id ? "yourMessage" : "theirMessage";
   const name = user.username;
   const [entered, setEntered] = useState(false);
@@ -63,12 +69,16 @@ const Message = ({ message, user, currentUser, timestamp }) => {
             ...transitionStyles[state],
           }}
         >
-          <header>
+          <header
+            style={{ backgroundColor: `hsl(${backgroundColor},100%, 73% )` }}
+          >
             {currentUser.id !== user.id && <p>name</p>}
             {state === "entered" && <p>{timeText}</p>}
             {state === "entering" && <span className={styles.loading}></span>}
           </header>
-          <footer>
+          <footer
+            style={{ backgroundColor: `hsl(${backgroundColor},100%, 83% )` }}
+          >
             <h4>{message}</h4>
           </footer>
         </div>

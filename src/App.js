@@ -14,15 +14,14 @@ function App() {
     colors.push([i * 10, "100%", "63%"]);
   }
 
-  const idToHue = (id = "abcde") => {
-    if (!id) {
-      id = "abcde";
-    }
+  const idToHue = id => {
     const hue =
-      id
+      (id
         .split("")
         .map(s => s.charCodeAt(0))
-        .reduce((a, b) => a + b) % 36;
+        .reduce((a, b) => a + b) %
+        36) *
+      10;
 
     return hue;
   };
@@ -68,7 +67,7 @@ function App() {
               <Message
                 key={message.id}
                 {...message}
-                color={idToHue(message.id)}
+                backgroundColor={idToHue(message.user.id)}
                 currentUser={user}
               />
             );

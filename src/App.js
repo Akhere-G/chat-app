@@ -20,6 +20,7 @@ function App() {
       .onSnapshot(snapshot => {
         setMessages(snapshot.docs.map(doc => ({ ...doc.data(), id: doc.id })));
       });
+    window.scrollTo(0, document.body.scrollHeight);
   }, []);
 
   const sendMessage = e => {
@@ -37,7 +38,7 @@ function App() {
   return (
     <div className='page-container'>
       <header className='header'>
-        <h1>Chat App</h1>{" "}
+        <h1>Chat App</h1>
       </header>
       <main className='main'>
         <div className='messages'>
@@ -74,9 +75,6 @@ function App() {
           </FormControl>
         </form>
       </main>
-      <footer className='footer'>
-        <p>Akhere Ihoeghinlan @ 2020</p>
-      </footer>
     </div>
   );
 }

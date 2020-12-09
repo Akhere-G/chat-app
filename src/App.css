@@ -8,10 +8,19 @@
 }
 
 .header {
+  position: fixed;
+  background-color: #c8f;
+  color: #f8f8f8;
+  width: 100%;
+  padding: 0.5em;
+  z-index: 999;
+}
+.header h1 {
+  padding-left: 0.5em;
 }
 
 .main {
-  margin: 5rem auto;
+  margin: 5em auto;
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -25,12 +34,15 @@
   display: flex;
   flex-direction: column;
   max-width: 700px;
-  padding-bottom: 10rem;
+  max-height: 27%;
 }
 .messageForm {
-  position: absolute;
-  bottom: 5rem;
-  margin-top: 1rem;
+  background-color: #fff;
+  padding: 1rem;
+  padding-bottom: 3rem;
+  position: fixed;
+  bottom: 0;
+  margin-top: 1em;
   width: 100%;
   display: flex;
   justify-content: center;
@@ -42,18 +54,6 @@
   margin-right: 10px;
 }
 .messageForm input {
-  margin-right: 0.5rem;
-  border-radius: 0.5rem;
-  padding: 1rem;
-}
-.footer {
-  position: absolute;
-  text-align: center;
-  height: 2.5rem;
-  width: 100%;
-  bottom: 0;
-}
-
-.footer p {
-  padding: 1rem;
+  margin-right: 0.5em;
+  padding: 1em;
 }

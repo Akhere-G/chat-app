@@ -14,6 +14,9 @@
   font-size: 0.8rem;
 }
 
+.name {
+  margin-right: 1em;
+}
 .loading {
   margin-left: 10px;
   border: 6px solid #f3f3f3;
@@ -85,6 +88,9 @@
 }
 
 .theirMessage header {
+  display: flex;
+
+  justify-content: space-between;
 }
 .theirMessage footer {
   border-radius: 0em 0em 1em 0em;

@@ -28,5 +28,10 @@ h6 {
 }
 
 h1 {
-  font-size: 1.875em;
+  font-size: 1.875rem;
+}
+
+button,
+input {
+  font-size: 1rem;
 }

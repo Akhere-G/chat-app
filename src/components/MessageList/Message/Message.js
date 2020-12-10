@@ -10,31 +10,8 @@ const Message = ({
   backgroundColor,
 }) => {
   const style = currentUser.id === user.id ? "yourMessage" : "theirMessage";
-  const name = user.username;
+  const name = currentUser.id === user.id ? "Me" : user.username;
   const [entered, setEntered] = useState(false);
-
-  const defaultStyle = {
-    transition: `transform 200ms, opacity 200ms ease`,
-    opacity: 1,
-    transform: "scale(0)",
-  };
-
-  const transitionStyles = {
-    entering: {
-      transform: "scale(1)",
-      opacity: 1,
-      left: "-10px",
-      transition: "all linear 300ms",
-    },
-    entered: {
-      transform: "scale(1)",
-      opacity: 1,
-      left: "0px",
-      transition: "all linear 300ms",
-    },
-    exiting: { opacity: 0 },
-    exited: { opacity: 0 },
-  };
 
   let timeText = "";
   if (timestamp) {
@@ -62,17 +39,12 @@ const Message = ({
       unmountOnExit
     >
       {state => (
-        <div
-          className={`${styles.message} ${styles[style]}`}
-          style={{
-            ...defaultStyle,
-            ...transitionStyles[state],
-          }}
-        >
+        <div className={`${styles.message} ${styles[style]}`}>
           <header
             style={{ backgroundColor: `hsl(${backgroundColor},100%, 73% )` }}
           >
-            {currentUser.id !== user.id && <p>name</p>}
+            <p className={styles.name}>{name}</p>
+
             {state === "entered" && <p>{timeText}</p>}
             {state === "entering" && <span className={styles.loading}></span>}
           </header>

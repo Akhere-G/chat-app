@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
-import Message from "./components/Message";
+import Message from "./components/MessageList/Message/Message";
 import firebase from "firebase";
 import db from "./firebase";
 import "./App.css";
-import Login from "./components/Login";
+import { Header, MessageList, MessageBar, Login } from "./components/";
 function App() {
   const [input, setInput] = useState("");
   const [messages, setMessages] = useState([]);
@@ -14,34 +14,23 @@ function App() {
     colors.push([i * 10, "100%", "63%"]);
   }
 
-  const idToHue = id => {
-    const hue =
-      (id
-        .split("")
-        .map(s => s.charCodeAt(0))
-        .reduce((a, b) => a + b) %
-        36) *
-      10;
-
-    return hue;
-  };
   useEffect(() => {
     db.collection("messages")
       .orderBy("timestamp", "asc")
       .onSnapshot(snapshot => {
         setMessages(snapshot.docs.map(doc => ({ ...doc.data(), id: doc.id })));
       });
-
-    if (user) {
-      console.log(user.id, idToHue(user.id));
-    }
-    window.scrollTo(0, document.body.scrollHeight);
   }, []);
 
+  useEffect(() => {
+    window.scrollTo(0, document.body.scrollHeight);
+    setTimeout(() => {
+      window.scrollTo({ top: document.body.scrollHeight, behavior: "smooth" });
+    }, 1000);
+  }, [messages]);
   const sendMessage = () => {
     if (input) {
       const timestamp = firebase.firestore.FieldValue.serverTimestamp();
-      console.log(timestamp);
       db.collection("messages").add({
         message: input,
         user: user,
@@ -57,49 +46,12 @@ function App() {
 
   return (
     <div className='page-container'>
-      <header className='header'>
-        <h1>Chat App</h1>
-      </header>
+      <Header />
+
       <main className='main'>
-        <div className='messages'>
-          {messages.map(message => {
-            return (
-              <Message
-                key={message.id}
-                {...message}
-                backgroundColor={idToHue(message.user.id)}
-                currentUser={user}
-              />
-            );
-          })}
-        </div>
-        <form
-          className='messageForm'
-          onSubmit={e => {
-            e.preventDefault();
-          }}
-        >
-          <div className='formCenter'>
-            <input
-              id='input'
-              type='text'
-              value={input}
-              placeholder="What's on your mind?"
-              onChange={e => {
-                setInput(e.target.value);
-              }}
-            />
-            <button
-              type='submit'
-              onClick={() => {
-                sendMessage();
-              }}
-            >
-              send
-            </button>
-          </div>
-        </form>
+        <MessageList messages={messages} user={user} />
       </main>
+      <MessageBar input={input} setInput={setInput} sendMessage={sendMessage} />
     </div>
   );
 }

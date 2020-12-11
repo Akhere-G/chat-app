@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import styles from "./ScrollDownBtn.module.css";
-import { ArrowDownward } from "@material-ui/icons";
+import { DoubleArrow } from "@material-ui/icons";
 const ScrollUpBtn = () => {
   const [showScroll, setShowScroll] = useState(false);
 
@@ -27,7 +27,7 @@ const ScrollUpBtn = () => {
       className={`${styles.scrollDownBtn} ${showScroll && styles.show}`}
       onClick={scrollDown}
     >
-      <ArrowDownward />
+      <DoubleArrow />
     </div>
   );
 };

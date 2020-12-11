@@ -13,7 +13,7 @@
   justify-content: center;
   transition: ease-in-out 200ms;
   transform: scale(0.5);
-  box-shadow: 1px 1px 4px rgb(0, 0, 0, 0.5);
+  box-shadow: 1px 1px 4px rgb(0, 0, 0, 0.2);
 }
 
 .show {
@@ -26,15 +26,32 @@
   color: var(--text-primary-color-1);
   cursor: pointer;
   transition: ease-in-out 200ms;
-  transform: scale(1.1);
 }
 
 .scrollDownBtn svg {
+  padding: 1.4rem;
+  position: relative;
   color: #eee;
   transition: ease-in-out 200ms;
+  top: 0;
+  transform: rotate(90deg);
 }
 
 .scrollDownBtn svg:hover {
   color: #fff;
   transition: ease-in-out 200ms;
+  animation: spin 600ms ease-out infinite;
+  transform: rotate(90deg);
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(90deg) scale(1);
+  }
+  50% {
+    transform: rotate(90deg) scale(1.3);
+  }
+  100% {
+    transform: rotate(90deg) scale(1);
+  }
 }

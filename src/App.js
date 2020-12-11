@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import firebase from "firebase";
 import db from "./firebase";
 import "./App.css";
+import logo from "./assets/image.png";
 import { Header, MessageList, MessageBar, Login } from "./components/";
 function App() {
   const [input, setInput] = useState("");
@@ -34,12 +35,12 @@ function App() {
   };
 
   if (!user) {
-    return <Login setUser={setUser} />;
+    return <Login logo={logo} setUser={setUser} />;
   }
 
   return (
     <div className='page-container'>
-      <Header />
+      <Header logo={logo} />
       <MessageList messages={messages} user={user} />
       <MessageBar input={input} setInput={setInput} sendMessage={sendMessage} />
     </div>

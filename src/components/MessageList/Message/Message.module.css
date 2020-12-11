@@ -2,7 +2,7 @@
   min-width: 30%;
   max-width: 80%;
   position: relative;
-  padding-bottom: 0.3em;
+  padding-bottom: 0em;
 }
 
 .message header {
@@ -48,7 +48,7 @@
 }
 
 .yourMessage {
-  margin: 0 0 1em auto;
+  margin: 0 0 0.5em auto;
 
   animation: slideInRight 500ms ease 10ms;
 }
@@ -67,14 +67,12 @@
   }
 }
 
-.yourMessage header {
-}
 .yourMessage footer {
   border-radius: 0em 0em 0em 1em;
 }
 
 .theirMessage {
-  margin: 0 auto 2em 0;
+  margin: 0 auto 0.8em 0;
   animation: slideInLeft 500ms ease 10ms backwards;
 }
 @keyframes slideInLeft {
@@ -91,11 +89,6 @@
   }
 }
 
-.theirMessage header {
-  display: flex;
-
-  justify-content: space-between;
-}
 .theirMessage footer {
   border-radius: 0em 0em 1em 0em;
 }

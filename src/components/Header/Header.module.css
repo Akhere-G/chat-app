@@ -1,0 +1,16 @@
+.header {
+  position: fixed;
+  background-color: #48f;
+  color: #f8f8f8;
+  width: 100%;
+  padding: 0.5em;
+  z-index: 999;
+  display: flex;
+  justify-content: center;
+}
+
+.center {
+  padding-left: 1rem;
+  width: 100%;
+  max-width: 700px;
+}

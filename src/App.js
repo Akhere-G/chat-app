@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import Message from "./components/MessageList/Message/Message";
 import firebase from "firebase";
 import db from "./firebase";
 import "./App.css";
@@ -48,9 +47,8 @@ function App() {
     <div className='page-container'>
       <Header />
 
-      <main className='main'>
-        <MessageList messages={messages} user={user} />
-      </main>
+      <MessageList messages={messages} user={user} />
+
       <MessageBar input={input} setInput={setInput} sendMessage={sendMessage} />
     </div>
   );

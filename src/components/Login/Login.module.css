@@ -1,54 +1,69 @@
-.login {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-evenly;
-  align-items: center;
-  height: 100vh;
-  margin: auto;
-}
-
-.loginCenter {
-  display: flex;
+.container {
+  width: 100%;
   height: 100%;
+}
+
+.wrapper {
   width: 100%;
-  justify-content: center;
-  flex-direction: column;
-  margin: 0 auto;
-  max-width: 500px;
-  align-items: center;
-}
-
-.loginImg {
-  width: 18em;
-}
-
-.loginText {
-  margin-top: 7rem;
-}
-
-.loginLogo {
-  width: 100%;
+  height: 100%;
+  min-height: 100vh;
   max-width: 300px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
 }
 
-.loginLogo > img {
-  width: 100%;
+.imgContainer {
+  width: 50%;
 }
 
-.loginButton {
+.imgContainer > img {
   width: 100%;
-  height: 4rem;
-  margin-top: 3rem;
-  font-size: 1.2rem;
-  background-color: #c2c5df;
-  color: #eff2f5;
+  border-radius: 0.3rem;
+}
+
+.text {
+  letter-spacing: 0.5rem;
+  background-color: #fff;
+  padding: 0.4em;
+  font-size: 1.1rem;
+  margin-top: 1rem;
+  margin-bottom: 3rem;
+
+  border-radius: 0.4em;
+  color: #4d4;
   font-weight: 800;
-  transition: all 100ms ease-in;
 }
 
-.loginButton:hover {
-  background-color: #2e81f4;
-  color: #eff2f5;
-  transform: scale(1.07);
-  transition: all 100ms ease-in;
+.btn {
+  width: 70%;
+  padding: 0.4em;
+  border: none;
+  border-radius: 0.4rem;
+  background-color: #4d4;
+  color: #ffffff;
+  cursor: pointer;
+  animation: floatUp ease-out 2000ms;
+  position: relative;
+  transition: ease-in 300ms;
+  letter-spacing: 0.2em;
+}
+
+.btn:hover {
+  transform: scale(1.1);
+  background-color: #0a0;
+  transition: ease-in 300ms;
+  letter-spacing: 0.4em;
+}
+@keyframes floatUp {
+  0% {
+    bottom: -100px;
+    opacity: 0;
+  }
+  100% {
+    bottom: 0px;
+    opacity: 1;
+  }
 }

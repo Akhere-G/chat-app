@@ -45,7 +45,7 @@ const Message = ({
           >
             <p className={styles.name}>{name}</p>
 
-            {state === "entered" && <p>{timeText}</p>}
+            {state === "entered" && <p className={styles.time}>{timeText}</p>}
             {state === "entering" && <span className={styles.loading}></span>}
           </header>
           <footer

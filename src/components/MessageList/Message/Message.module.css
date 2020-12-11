@@ -15,7 +15,11 @@
 }
 
 .name {
-  margin-right: 1em;
+  margin-right: 0.5em;
+}
+
+.time {
+  text-align: end;
 }
 .loading {
   margin-left: 10px;

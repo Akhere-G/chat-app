@@ -1,0 +1,50 @@
+.messageForm {
+  background-color: #246;
+  padding: 1rem;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  z-index: 999;
+}
+.formCenter {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  max-width: 750px;
+}
+
+.messageForm input {
+  margin-right: 3%;
+  padding: 1em;
+  border-radius: 3em;
+  border: none;
+  width: 65%;
+  transition: all linear 150ms;
+  color: #666;
+}
+
+.messageForm input:focus,
+.messageForm input:hover {
+  transition: all linear 150ms;
+  transform: scale(1.05);
+  color: #000;
+}
+.messageForm button {
+  padding: 1em;
+  border-radius: 3em;
+  border: none;
+  background-color: #4f4;
+  width: 20%;
+  transition: all linear 150ms;
+}
+
+.messageForm button:hover,
+.messageForm button:focus {
+  transition: all linear 150ms;
+  background-color: #8f8;
+  transform: scale(1.05);
+  letter-spacing: 0.1em;
+  cursor: pointer;
+}

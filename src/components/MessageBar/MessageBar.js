@@ -1,14 +1,14 @@
 import React from "react";
-
+import styles from "./MessageBar.module.css";
 const MessageBar = ({ input, setInput, sendMessage }) => {
   return (
     <form
-      className='messageForm'
+      className={styles.messageForm}
       onSubmit={e => {
         e.preventDefault();
       }}
     >
-      <div className='formCenter'>
+      <div className={styles.formCenter}>
         <input
           id='input'
           type='text'

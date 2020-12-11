@@ -48,7 +48,12 @@ const MessageList = ({ messages, user }) => {
 };
 
 MessageList.propTypes = {
-  messages: PropTypes.arrayOf(PropTypes.object),
+  messages: PropTypes.arrayOf(
+    PropTypes.shape({
+      username: PropTypes.string.isRequired,
+      id: PropTypes.string.isRequired,
+    })
+  ),
   user: PropTypes.shape({
     username: PropTypes.string.isRequired,
     id: PropTypes.string.isRequired,

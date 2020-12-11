@@ -1,6 +1,7 @@
 import React from "react";
 import styles from "./Login.module.css";
 import { auth, provider } from "../../firebase";
+import Helmet from "react-helmet";
 import src from "../../assets/image.png";
 export default function Login({ setUser }) {
   const signIn = e => {
@@ -15,6 +16,7 @@ export default function Login({ setUser }) {
   };
   return (
     <div className={styles.container}>
+      <Helmet title='Chat App | Login' />
       <div className={styles.wrapper}>
         <div className={styles.imgContainer}>
           <img src={src} alt='logo' />

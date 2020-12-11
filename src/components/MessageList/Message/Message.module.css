@@ -17,6 +17,7 @@
   border-radius: 1em 1em 0em 0em;
   text-transform: capitalize;
   font-size: 0.8rem;
+  align-items: center;
 }
 
 .name {

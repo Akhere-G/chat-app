@@ -41,6 +41,27 @@
   }
 }
 
+.message button {
+  background-color: transparent;
+  border: none;
+}
+.message svg {
+  max-width: 100%;
+  cursor: pointer;
+  transform: scale(1);
+  color: #555;
+  height: 0.8em;
+
+  transition: all linear 300ms;
+}
+
+.message svg:hover {
+  color: #000;
+
+  transition: all linear 300ms;
+  transform: rotate(36);
+}
+
 .message footer {
   padding: 0.2em 0.5em 1em 0.4em;
   font-weight: 100;
@@ -91,4 +112,11 @@
 
 .theirMessage footer {
   border-radius: 0em 0em 1em 0em;
+}
+
+.deleted {
+  display: flex;
+  border: 1px solid;
+  border-radius: 3em;
+  padding: 0.5em;
 }

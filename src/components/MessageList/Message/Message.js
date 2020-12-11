@@ -2,16 +2,23 @@ import React, { useState, useEffect } from "react";
 import styles from "./Message.module.css";
 import PropTypes from "prop-types";
 import { Transition } from "react-transition-group";
+import HighlightOffIcon from "@material-ui/icons/HighlightOff";
+import BlockIcon from "@material-ui/icons/Block";
+import db from "../../../firebase.js";
 const Message = ({
   message,
   user,
   currentUser,
   timestamp,
+  sent,
   backgroundColor,
+  messageId,
 }) => {
-  const style = currentUser.id === user.id ? "yourMessage" : "theirMessage";
-  const name = currentUser.id === user.id ? "Me" : user.username;
+  const isCurrentUserMessage = currentUser.id === user.id;
+  const style = isCurrentUserMessage ? "yourMessage" : "theirMessage";
+  const name = isCurrentUserMessage ? "Me" : user.username;
   const [entered, setEntered] = useState(false);
+  const [isSent, setIsSent] = useState(sent);
 
   let timeText = "";
   if (timestamp) {
@@ -28,6 +35,17 @@ const Message = ({
     setEntered(true);
   }, []);
 
+  if (!isSent) {
+    return (
+      <div
+        className={`${styles[style]} ${styles.deleted}`}
+        style={{ color: `hsl(${backgroundColor},100%, 73% )` }}
+      >
+        <BlockIcon />
+        message deleted
+      </div>
+    );
+  }
   return (
     <Transition
       in={entered}
@@ -47,6 +65,18 @@ const Message = ({
 
             {state === "entered" && <p className={styles.time}>{timeText}</p>}
             {state === "entering" && <span className={styles.loading}></span>}
+            {isCurrentUserMessage && (
+              <button
+                onClick={() => {
+                  setIsSent(false);
+                  db.collection("messages")
+                    .doc(messageId)
+                    .update({ sent: false });
+                }}
+              >
+                <HighlightOffIcon />
+              </button>
+            )}
           </header>
           <footer
             style={{ backgroundColor: `hsl(${backgroundColor},100%, 83% )` }}

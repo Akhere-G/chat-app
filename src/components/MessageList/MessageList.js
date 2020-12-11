@@ -38,6 +38,7 @@ const MessageList = ({ messages, user }) => {
               {...message}
               backgroundColor={idToHue(message.user.id)}
               currentUser={user}
+              messageId={message.id}
             />
           );
         })}

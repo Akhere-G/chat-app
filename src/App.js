@@ -7,9 +7,7 @@ import { Header, MessageList, MessageBar, Login } from "./components/";
 const userKey = "user";
 const getUser = () => {
   let user = localStorage.getItem(userKey);
-  console.log("retrived from database", user);
   user = JSON.parse(user);
-  console.log("parsed into object", user);
 
   return user;
 };
@@ -28,10 +26,7 @@ function App() {
   }, []);
 
   useEffect(() => {
-    console.log("about to stringify", user);
     const textUser = JSON.stringify(user);
-    console.log("stringified ", textUser);
-
     localStorage.setItem(userKey, textUser);
   }, [user]);
 

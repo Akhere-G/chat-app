@@ -4,15 +4,17 @@ import db from "./firebase";
 import "./App.css";
 import logo from "./assets/image.png";
 import { Header, MessageList, MessageBar, Login } from "./components/";
+
+const userKey = "user";
+const getUser = () => {
+  const user = localStorage.getItem(userKey);
+  return user;
+};
+
 function App() {
   const [input, setInput] = useState("");
   const [messages, setMessages] = useState([]);
-  const [user, setUser] = useState(null);
-  const colors = [];
-
-  for (let i = 0; i < 36; i++) {
-    colors.push([i * 10, "100%", "63%"]);
-  }
+  const [user, setUser] = useState(getUser());
 
   useEffect(() => {
     db.collection("messages")
@@ -21,6 +23,12 @@ function App() {
         setMessages(snapshot.docs.map(doc => ({ ...doc.data(), id: doc.id })));
       });
   }, []);
+
+  useEffect(() => {
+    if (user) {
+      localStorage.setItem(userKey, JSON.stringify(user));
+    }
+  }, [user]);
 
   const sendMessage = () => {
     if (input) {
@@ -40,7 +48,7 @@ function App() {
 
   return (
     <div className='page-container'>
-      <Header logo={logo} />
+      <Header logo={logo} setUser={setUser} />
       <MessageList messages={messages} user={user} />
       <MessageBar input={input} setInput={setInput} sendMessage={sendMessage} />
     </div>

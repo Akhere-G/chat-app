@@ -28,7 +28,7 @@
 .messageForm input:focus,
 .messageForm input:hover {
   transition: all linear 150ms;
-  transform: scale(1.05);
+  letter-spacing: 0.1em;
   color: #000;
 }
 .messageForm button {
@@ -44,7 +44,7 @@
 .messageForm button:focus {
   transition: all linear 150ms;
   background-color: #8f8;
-  transform: scale(1.05);
+  transform: scale(1.02);
   letter-spacing: 0.1em;
   cursor: pointer;
 }

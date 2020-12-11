@@ -10,7 +10,7 @@ const ScrollUpBtn = () => {
 
   function scrollFunction() {
     const scrollY = window.scrollY;
-    const pageHeight = (document.body.scrollHeight - window.innerHeight) * 0.9;
+    const pageHeight = (document.body.scrollHeight - window.innerHeight) * 0.5;
     if (scrollY < pageHeight) {
       setShowScroll(true);
     } else {
@@ -23,12 +23,9 @@ const ScrollUpBtn = () => {
   };
 
   return (
-    <div className={styles.container}>
+    <div className={`${styles.container} ${showScroll ? styles.show : ""}`}>
       <div className={styles.wrapper}>
-        <div
-          className={`${styles.scrollDownBtn} ${showScroll && styles.show}`}
-          onClick={scrollDown}
-        >
+        <div className={styles.scrollDownBtn} onClick={scrollDown}>
           <DoubleArrow />
         </div>
       </div>

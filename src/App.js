@@ -6,7 +6,11 @@ import { Header, MessageList, MessageBar, Login } from "./components/";
 
 const userKey = "user";
 const getUser = () => {
-  const user = JSON.parse(localStorage.getItem(userKey));
+  let user = localStorage.getItem(userKey);
+  console.log("retrived from database", user);
+  user = JSON.parse(user);
+  console.log("parsed into object", user);
+
   return user;
 };
 
@@ -24,9 +28,11 @@ function App() {
   }, []);
 
   useEffect(() => {
-    if (user) {
-      localStorage.setItem(userKey, JSON.stringify(user));
-    }
+    console.log("about to stringify", user);
+    const textUser = JSON.stringify(user);
+    console.log("stringified ", textUser);
+
+    localStorage.setItem(userKey, textUser);
   }, [user]);
 
   const sendMessage = () => {
@@ -35,6 +41,7 @@ function App() {
       db.collection("messages").add({
         message: input,
         user: user,
+        sent: true,
         timestamp,
       });
     }

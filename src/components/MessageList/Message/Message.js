@@ -63,20 +63,24 @@ const Message = ({
           >
             <p className={styles.name}>{name}</p>
 
-            {state === "entered" && <p className={styles.time}>{timeText}</p>}
-            {state === "entering" && <span className={styles.loading}></span>}
-            {isCurrentUserMessage && (
-              <button
-                onClick={() => {
-                  setIsSent(false);
-                  db.collection("messages")
-                    .doc(messageId)
-                    .update({ sent: false });
-                }}
-              >
-                <HighlightOffIcon />
-              </button>
-            )}
+            <div>
+              {state === "entered" && (
+                <span className={styles.time}>{timeText}</span>
+              )}
+              {state === "entering" && <span className={styles.loading}></span>}
+              {isCurrentUserMessage && (
+                <button
+                  onClick={() => {
+                    setIsSent(false);
+                    db.collection("messages")
+                      .doc(messageId)
+                      .update({ sent: false });
+                  }}
+                >
+                  <HighlightOffIcon fontSize='small' />
+                </button>
+              )}
+            </div>
           </header>
           <footer
             style={{ backgroundColor: `hsl(${backgroundColor},100%, 83% )` }}

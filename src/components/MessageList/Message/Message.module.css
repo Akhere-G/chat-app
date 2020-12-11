@@ -5,6 +5,11 @@
   padding-bottom: 0em;
 }
 
+.message div {
+  display: flex;
+  align-items: center;
+}
+
 .message header {
   display: flex;
   justify-content: space-between;
@@ -44,13 +49,12 @@
 .message button {
   background-color: transparent;
   border: none;
+  height: 100%;
+  display: flex;
 }
 .message svg {
-  max-width: 100%;
   cursor: pointer;
-  transform: scale(1);
   color: #555;
-  height: 0.8em;
 
   transition: all linear 300ms;
 }
@@ -59,7 +63,6 @@
   color: #000;
 
   transition: all linear 300ms;
-  transform: rotate(36);
 }
 
 .message footer {

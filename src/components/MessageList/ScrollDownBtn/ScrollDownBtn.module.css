@@ -1,0 +1,40 @@
+.scrollDownBtn {
+  position: fixed;
+  bottom: 0rem;
+  right: 1rem;
+  background: #4f4;
+  padding: 0.5rem;
+  border-radius: 100%;
+  width: 3rem;
+  height: 3rem;
+  align-items: center;
+  display: flex;
+  z-index: 999;
+  justify-content: center;
+  transition: ease-in-out 200ms;
+  transform: scale(0.5);
+  box-shadow: 1px 1px 4px rgb(0, 0, 0, 0.5);
+}
+
+.show {
+  bottom: 5.5rem;
+  transform: scale(1);
+  transition: ease-in-out 200ms;
+}
+
+.scrollDownBtn:hover {
+  color: var(--text-primary-color-1);
+  cursor: pointer;
+  transition: ease-in-out 200ms;
+  transform: scale(1.1);
+}
+
+.scrollDownBtn svg {
+  color: #eee;
+  transition: ease-in-out 200ms;
+}
+
+.scrollDownBtn svg:hover {
+  color: #fff;
+  transition: ease-in-out 200ms;
+}

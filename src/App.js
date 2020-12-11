@@ -21,12 +21,6 @@ function App() {
       });
   }, []);
 
-  useEffect(() => {
-    window.scrollTo(0, document.body.scrollHeight);
-    setTimeout(() => {
-      window.scrollTo({ top: document.body.scrollHeight, behavior: "smooth" });
-    }, 1000);
-  }, [messages]);
   const sendMessage = () => {
     if (input) {
       const timestamp = firebase.firestore.FieldValue.serverTimestamp();
@@ -46,9 +40,7 @@ function App() {
   return (
     <div className='page-container'>
       <Header />
-
       <MessageList messages={messages} user={user} />
-
       <MessageBar input={input} setInput={setInput} sendMessage={sendMessage} />
     </div>
   );

@@ -10,7 +10,7 @@ export default function Login({ setUser }) {
       .then(result => {
         setUser({ username: result.user.displayName, id: result.user.uid });
       })
-      .catch(error => alert(error.message));
+      .catch(error => console.log(error.message));
     e.preventDefault();
   };
   return (

@@ -17,7 +17,7 @@
 
 .messageForm input {
   margin-right: 3%;
-  padding: 1em;
+  padding: 0.65em;
   border-radius: 3em;
   border: none;
   width: 65%;
@@ -32,7 +32,7 @@
   color: #000;
 }
 .messageForm button {
-  padding: 1em;
+  padding: 0.65em;
   border-radius: 3em;
   border: none;
   background-color: #4f4;

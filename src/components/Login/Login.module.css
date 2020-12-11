@@ -45,16 +45,16 @@
   background-color: #4d4;
   color: #ffffff;
   cursor: pointer;
-  animation: floatUp ease-out 2000ms;
+  animation: floatUp ease-out 1000ms;
   position: relative;
-  transition: ease-in 300ms;
+  transition: ease-in 150ms;
   letter-spacing: 0.2em;
 }
 
 .btn:hover {
   transform: scale(1.1);
   background-color: #0a0;
-  transition: ease-in 300ms;
+  transition: ease-in 150ms;
   letter-spacing: 0.4em;
 }
 @keyframes floatUp {

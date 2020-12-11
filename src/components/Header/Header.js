@@ -1,15 +1,15 @@
 import React from "react";
 import styles from "./Header.module.css";
+import logo from "../../assets/image.png";
+import PropTypes from "prop-types";
 
-const Header = ({ logo, setUser }) => {
+const Header = ({ setUser }) => {
   return (
     <header className={styles.header}>
       <div className={styles.center}>
-        <div>
-          <h1>Chat App</h1>
-          <div className={styles.logoContainer}>
-            <img src={logo} alt='logo' />
-          </div>
+        <h1>Chat App</h1>
+        <div className={styles.logoContainer}>
+          <img src={logo} alt='logo' />
         </div>
         <button
           onClick={() => {
@@ -24,6 +24,10 @@ const Header = ({ logo, setUser }) => {
       </div>
     </header>
   );
+};
+
+Header.propTypes = {
+  setUser: PropTypes.func.isRequired,
 };
 
 export default Header;

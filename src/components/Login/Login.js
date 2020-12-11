@@ -2,6 +2,8 @@ import React from "react";
 import styles from "./Login.module.css";
 import { auth, provider } from "../../firebase";
 import Helmet from "react-helmet";
+import PropTypes from "prop-types";
+
 import src from "../../assets/image.png";
 export default function Login({ setUser }) {
   const signIn = e => {
@@ -29,3 +31,6 @@ export default function Login({ setUser }) {
     </div>
   );
 }
+Login.propTypes = {
+  setUser: PropTypes.func.isRequired,
+};

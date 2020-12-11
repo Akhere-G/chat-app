@@ -1,5 +1,8 @@
 import React from "react";
 import styles from "./MessageBar.module.css";
+import PropTypes from "prop-types";
+import SendIcon from "@material-ui/icons/Send";
+
 const MessageBar = ({ input, setInput, sendMessage }) => {
   return (
     <form
@@ -24,11 +27,16 @@ const MessageBar = ({ input, setInput, sendMessage }) => {
             sendMessage();
           }}
         >
-          send
+          <SendIcon />
         </button>
       </div>
     </form>
   );
 };
 
+MessageBar.propTypes = {
+  input: PropTypes.string.isRequired,
+  setInput: PropTypes.func.isRequired,
+  sendMessage: PropTypes.func.isRequired,
+};
 export default MessageBar;

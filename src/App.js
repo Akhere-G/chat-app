@@ -2,12 +2,11 @@ import React, { useState, useEffect } from "react";
 import firebase from "firebase";
 import db from "./firebase";
 import "./App.css";
-import logo from "./assets/image.png";
 import { Header, MessageList, MessageBar, Login } from "./components/";
 
 const userKey = "user";
 const getUser = () => {
-  const user = localStorage.getItem(userKey);
+  const user = JSON.parse(localStorage.getItem(userKey));
   return user;
 };
 
@@ -43,12 +42,12 @@ function App() {
   };
 
   if (!user) {
-    return <Login logo={logo} setUser={setUser} />;
+    return <Login setUser={setUser} />;
   }
 
   return (
     <div className='page-container'>
-      <Header logo={logo} setUser={setUser} />
+      <Header setUser={setUser} />
       <MessageList messages={messages} user={user} />
       <MessageBar input={input} setInput={setInput} sendMessage={sendMessage} />
     </div>

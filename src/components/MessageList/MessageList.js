@@ -6,6 +6,9 @@ import ScrollDownBtn from "./ScrollDownBtn/ScrollDownBtn";
 import Helmet from "react-helmet";
 const MessageList = ({ messages, user }) => {
   const idToHue = id => {
+    if (!id) {
+      return 0;
+    }
     const hue =
       (id
         .split("")
@@ -44,6 +47,12 @@ const MessageList = ({ messages, user }) => {
   );
 };
 
-MessageList.propTypes = {};
+MessageList.propTypes = {
+  messages: PropTypes.arrayOf(PropTypes.object),
+  user: PropTypes.shape({
+    username: PropTypes.string.isRequired,
+    id: PropTypes.string.isRequired,
+  }),
+};
 
 export default MessageList;

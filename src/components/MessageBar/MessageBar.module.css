@@ -16,9 +16,13 @@
 }
 
 .messageForm input {
+  display: flex;
+  flex-grow: 1;
   margin-right: 3%;
   padding: 0.65em;
   border-radius: 3em;
+  margin-left: 3%;
+
   border: none;
   width: 65%;
   transition: all linear 150ms;
@@ -32,12 +36,22 @@
   color: #000;
 }
 .messageForm button {
+  display: flex;
+  flex-grow: 0;
+  margin-right: 3%;
+  justify-content: center;
+  align-items: center;
   padding: 0.65em;
   border-radius: 3em;
   border: none;
   background-color: #2ddc1f;
   width: 20%;
   transition: all linear 150ms;
+}
+
+.messageForm svg {
+  color: #fff;
+  font-size: 1rem;
 }
 
 .messageForm button:hover,

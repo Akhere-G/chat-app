@@ -10,12 +10,10 @@ const MessageList = ({ messages, user }) => {
       return 0;
     }
     const hue =
-      (id
+      id
         .split("")
         .map(s => s.charCodeAt(0))
-        .reduce((a, b) => a + b) %
-        36) *
-      10;
+        .reduce((a, b) => a + b) % 360;
 
     return hue;
   };

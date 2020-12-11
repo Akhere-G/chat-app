@@ -23,11 +23,15 @@ const ScrollUpBtn = () => {
   };
 
   return (
-    <div
-      className={`${styles.scrollDownBtn} ${showScroll && styles.show}`}
-      onClick={scrollDown}
-    >
-      <DoubleArrow />
+    <div className={styles.container}>
+      <div className={styles.wrapper}>
+        <div
+          className={`${styles.scrollDownBtn} ${showScroll && styles.show}`}
+          onClick={scrollDown}
+        >
+          <DoubleArrow />
+        </div>
+      </div>
     </div>
   );
 };

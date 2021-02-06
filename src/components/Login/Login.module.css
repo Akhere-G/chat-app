@@ -15,8 +15,14 @@
   margin: 0 auto;
 }
 
-.imgContainer {
-  width: 50%;
+.messageIcon {
+  background-color: #357;
+  padding: 2rem;
+  border-radius: 10px;
+}
+
+.messageIcon svg {
+  color: #fff;
 }
 
 .imgContainer > img {
@@ -32,7 +38,7 @@
   margin-bottom: 3rem;
 
   border-radius: 0.4em;
-  color: #2ddc1f;
+  color: #246;
   font-weight: 800;
 }
 
@@ -41,7 +47,7 @@
   padding: 0.4em;
   border: none;
   border-radius: 0.4rem;
-  background-color: #2ddc1f;
+  background-color: #246;
   color: #ffffff;
   cursor: pointer;
   animation: floatUp ease-out 1000ms;
@@ -52,7 +58,7 @@
 
 .btn:hover {
   transform: scale(1.1);
-  background-color: #4ffe3f;
+  background-color: #357;
   color: #fff;
   transition: ease-in 150ms;
   letter-spacing: 0.4em;

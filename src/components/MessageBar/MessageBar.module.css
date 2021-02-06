@@ -44,7 +44,7 @@
   padding: 0.65em;
   border-radius: 3em;
   border: none;
-  background-color: #2ddc1f;
+  background-color: #135;
   width: 20%;
   transition: all linear 150ms;
 }
@@ -57,7 +57,7 @@
 .messageForm button:hover,
 .messageForm button:focus {
   transition: all linear 150ms;
-  background-color: #8f8;
+  background-color: #183858;
   transform: scale(1.02);
   letter-spacing: 0.1em;
   cursor: pointer;

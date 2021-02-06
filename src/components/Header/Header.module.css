@@ -1,6 +1,6 @@
 .header {
   position: fixed;
-  background-color: #2ddc1f;
+  background-color: #135;
   color: #f8f8f8;
   width: 100%;
   padding: 0.5em;
@@ -37,7 +37,7 @@
   border: none;
   border-radius: 1em;
   padding: 0.3em;
-  color: #2ddc1f;
+  color: #137;
   background-color: #fff;
   cursor: pointer;
   height: 60%;
@@ -51,7 +51,6 @@
   background-color: #246;
   transition: all linear 200ms;
   transform: scale(1.02);
-  letter-spacing: 0.1em;
   cursor: pointer;
 }
 .logoContainer {
